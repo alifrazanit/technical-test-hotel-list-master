@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Hotel {
+  id: Int!
+
+  """Name is Required"""
+  name: String!
+
+  """location is Required"""
+  location: String!
+
+  """description is Optional"""
+  description: String
+}
+
+type Query {
+  getHotel(name: String, location: String, offset: Int!, limit: Int!): Hotel!
+}

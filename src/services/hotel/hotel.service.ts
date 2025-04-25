@@ -10,17 +10,13 @@ export class HotelService {
     async getHotels(params: {
         offset?: number,
         limit?: number,
-        cursor?: Prisma.HotelWhereUniqueInput,
-        orderBy?: Prisma.HotelOrderByWithRelationInput,
         where?: Prisma.HotelWhereInput
     }): Promise<Hotel[]> {
-        const { offset, limit, cursor, orderBy, where } = params;
+        const { offset, limit, where } = params;
         return this.prisma.hotel.findMany({
             skip: offset,
             take: limit,
-            cursor,
             where,
-            orderBy
         })
     }
 
@@ -30,14 +26,14 @@ export class HotelService {
         })
     }
 
-    async createHotel(data: Prisma.HotelCreateInput): Promise<Hotel>{
+    async createHotel(data: Prisma.HotelCreateInput): Promise<Hotel> {
         return this.prisma.hotel.create({ data });
     }
 
     async updateHotel(params: {
         where: Prisma.HotelWhereUniqueInput,
         data: Prisma.HotelUpdateInput
-    }){
+    }) {
         const { data, where } = params;
         return this.prisma.hotel.update({
             data,
@@ -47,7 +43,7 @@ export class HotelService {
 
     async deleteHotel(
         where: Prisma.HotelWhereUniqueInput
-    ): Promise<Hotel>{
+    ): Promise<Hotel> {
         return this.prisma.hotel.delete({
             where
         })

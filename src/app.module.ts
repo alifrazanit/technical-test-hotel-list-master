@@ -22,6 +22,6 @@ import { HotelService } from './services/hotel/hotel.service';
     HotelModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, HotelService],
+  providers: [AppService],
 })
 export class AppModule {}
