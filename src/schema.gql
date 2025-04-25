@@ -17,6 +17,7 @@ type Hotel {
 
 type Query {
   getHotels(name: String, location: String, offset: Int!, limit: Int!): [Hotel!]!
+  author(id: Int!): Hotel!
 }
 
 type Mutation {

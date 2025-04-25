@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Hotel } from '@models/hotel.model';
 import { GetHotelsArgs, CreateHotel } from '@dto/hotel.args';
 import { HotelService } from '@services/hotel/hotel.service';
@@ -20,6 +20,11 @@ export class HotelResolver {
                 location: args.location ? { contains: args.location } : undefined
             }
         })
+    }
+
+    @Query(() => Hotel)
+    async author(@Args('id', { type: () => Int }) id: number) {
+        return this.hotelService.getHotel({ id });
     }
 
     @Mutation(() => Hotel)
