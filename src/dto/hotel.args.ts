@@ -1,4 +1,5 @@
 import { ArgsType, Field, InputType, Int } from "@nestjs/graphql";
+import { IsNotEmpty, IsOptional, IsString, MaxLength } from "class-validator";
 
 
 @ArgsType()
@@ -19,18 +20,28 @@ export class GetHotelsArgs {
 @InputType()
 export class CreateHotel{
     @Field({ nullable: false })
+    @MaxLength(50)
+    @IsNotEmpty()
+    @IsString()
     name: string;
 
-    @Field({ nullable: false })
+    @Field()
+    @IsNotEmpty({
+        message: 'Location wajib tauu'
+    })
+    @IsString()
     location: string;
 
-    @Field({ nullable: false })
-    description: string;
+    @Field({ nullable: true })
+    @IsOptional()
+    @IsString()
+    description?: string;
 }
 
 @InputType()
 export class UpdateHotel{
     @Field({ nullable: true })
+    @MaxLength(50)
     name?: string;
 
     @Field({ nullable: true })

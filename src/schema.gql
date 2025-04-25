@@ -23,12 +23,13 @@ type Query {
 type Mutation {
   createHotel(data: CreateHotel!): Hotel!
   updateHotel(id: Int!, data: UpdateHotel!): Hotel!
+  deleteHotel(id: Int!): Hotel!
 }
 
 input CreateHotel {
   name: String!
   location: String!
-  description: String!
+  description: String
 }
 
 input UpdateHotel {
