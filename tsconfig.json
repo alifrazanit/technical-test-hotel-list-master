@@ -15,6 +15,7 @@
       "@models/*": ["src/models/*"],
       "@modules/*": ["src/modules/*"],
       "@dto/*": ["src/dto/*"],
+      "@enum/*": ["src/enum/*"],
     },
     "incremental": true,
     "skipLibCheck": true,

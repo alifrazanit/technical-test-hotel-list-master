@@ -13,14 +13,23 @@ export class HotelResolver {
 
     @Query(() => [Hotel])
     async getHotels(@Args() args: GetHotelsArgs) {
-        return this.hotelService.getHotels({
+        let orderBy: any = undefined;
+        if (args.orderByField && args.orderFieldDirection) {
+            orderBy = { [args.orderByField]: args.orderFieldDirection };
+        }
+        const hotels = await this.hotelService.getHotels({
             limit: args.limit,
             offset: args.offset,
             where: {
                 name: args.name ? { contains: args.name } : undefined,
                 location: args.location ? { contains: args.location } : undefined
-            }
-        })
+            },
+            orderBy
+        });
+        if (!hotels) {
+            throw new NotFoundException();
+        }
+        return hotels;
     }
 
     @Query(() => Hotel)
@@ -50,6 +59,10 @@ export class HotelResolver {
         @Args('id', { type: () => Int }) id: number,
         @Args('data') data: UpdateHotel
     ) {
+        const hotel = await this.hotelService.getHotel({ id });
+        if (!hotel) {
+            throw new NotFoundException();
+        }
         return this.hotelService.updateHotel({
             data,
             where: {
@@ -62,6 +75,10 @@ export class HotelResolver {
     async deleteHotel(
         @Args('id', { type: () => Int }) id: number
     ) {
+        const hotel = await this.hotelService.getHotel({ id });
+        if (!hotel) {
+            throw new NotFoundException();
+        }
         return this.hotelService.deleteHotel({
             id
         })

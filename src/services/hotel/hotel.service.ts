@@ -10,13 +10,15 @@ export class HotelService {
     async getHotels(params: {
         offset?: number,
         limit?: number,
-        where?: Prisma.HotelWhereInput
+        where?: Prisma.HotelWhereInput,
+        orderBy?: Prisma.HotelOrderByWithAggregationInput
     }): Promise<Hotel[]> {
-        const { offset, limit, where } = params;
+        const { offset, limit, where, orderBy } = params;
         return this.prisma.hotel.findMany({
             skip: offset,
             take: limit,
             where,
+            orderBy 
         })
     }
 
