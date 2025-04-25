@@ -27,3 +27,15 @@ export class CreateHotel{
     @Field({ nullable: false })
     description: string;
 }
+
+@InputType()
+export class UpdateHotel{
+    @Field({ nullable: true })
+    name?: string;
+
+    @Field({ nullable: true })
+    location?: string;
+
+    @Field({ nullable: true })
+    description?: string;
+}

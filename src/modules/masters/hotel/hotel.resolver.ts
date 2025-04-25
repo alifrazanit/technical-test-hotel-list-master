@@ -1,6 +1,6 @@
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Hotel } from '@models/hotel.model';
-import { GetHotelsArgs, CreateHotel } from '@dto/hotel.args';
+import { GetHotelsArgs, CreateHotel, UpdateHotel } from '@dto/hotel.args';
 import { HotelService } from '@services/hotel/hotel.service';
 
 
@@ -23,7 +23,7 @@ export class HotelResolver {
     }
 
     @Query(() => Hotel)
-    async author(@Args('id', { type: () => Int }) id: number) {
+    async getHotel(@Args('id', { type: () => Int }) id: number) {
         return this.hotelService.getHotel({ id });
     }
 
@@ -39,5 +39,17 @@ export class HotelResolver {
         })
     }
 
+    @Mutation(() => Hotel)
+    async updateHotel(
+        @Args('id', { type: () => Int }) id: number,
+        @Args('data') data: UpdateHotel
+    ) {
+        return this.hotelService.updateHotel({
+            data,
+            where: {
+                id
+            }
+        })
+    }
 
 }

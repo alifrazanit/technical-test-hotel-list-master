@@ -17,15 +17,22 @@ type Hotel {
 
 type Query {
   getHotels(name: String, location: String, offset: Int!, limit: Int!): [Hotel!]!
-  author(id: Int!): Hotel!
+  getHotel(id: Int!): Hotel!
 }
 
 type Mutation {
   createHotel(data: CreateHotel!): Hotel!
+  updateHotel(id: Int!, data: UpdateHotel!): Hotel!
 }
 
 input CreateHotel {
   name: String!
   location: String!
   description: String!
+}
+
+input UpdateHotel {
+  name: String
+  location: String
+  description: String
 }
