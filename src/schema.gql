@@ -16,5 +16,15 @@ type Hotel {
 }
 
 type Query {
-  getHotel(name: String, location: String, offset: Int!, limit: Int!): Hotel!
+  getHotels(name: String, location: String, offset: Int!, limit: Int!): [Hotel!]!
+}
+
+type Mutation {
+  createHotel(data: CreateHotel!): Hotel!
+}
+
+input CreateHotel {
+  name: String!
+  location: String!
+  description: String!
 }

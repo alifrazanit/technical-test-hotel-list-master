@@ -1,4 +1,4 @@
-import { ArgsType, Field, Int } from "@nestjs/graphql";
+import { ArgsType, Field, InputType, Int } from "@nestjs/graphql";
 
 
 @ArgsType()
@@ -14,4 +14,16 @@ export class GetHotelsArgs {
 
     @Field(() => Int)
     limit: number;
+}
+
+@InputType()
+export class CreateHotel{
+    @Field({ nullable: false })
+    name: string;
+
+    @Field({ nullable: false })
+    location: string;
+
+    @Field({ nullable: false })
+    description: string;
 }
