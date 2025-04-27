@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "hotel" ADD COLUMN     "image" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "price" DECIMAL(9,0) NOT NULL DEFAULT 0;

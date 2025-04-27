@@ -14,15 +14,13 @@ export class GetHotelsArgs {
     @IsOptional()
     location?: string;
 
-    @Field(() => Int)
-    @IsNotEmpty()
-    @IsNumber()
-    offset: number;
+    @Field(() => Int, { nullable: true })
+    @IsOptional()
+    offset?: number;
 
-    @Field(() => Int)
-    @IsNotEmpty()
-    @IsNumber()
-    limit: number;
+    @Field(() => Int, { nullable: true })
+    @IsOptional()
+    limit?: number;
 
     @Field({ nullable: true })
     @IsOptional()

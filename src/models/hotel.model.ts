@@ -13,4 +13,5 @@ export class Hotel{
 
     @Field({ nullable: true, description: 'description is Optional' })
     description?: string;
+
 }

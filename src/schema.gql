@@ -16,7 +16,7 @@ type Hotel {
 }
 
 type Query {
-  getHotels(name: String, location: String, offset: Int!, limit: Int!, orderByField: String, orderFieldDirection: orderFieldDirection!): [Hotel!]!
+  getHotels(name: String, location: String, offset: Int, limit: Int, orderByField: String, orderFieldDirection: orderFieldDirection!): [Hotel!]!
   getHotel(id: Int!): Hotel!
 }
 

@@ -14,12 +14,14 @@ export class HotelResolver {
     @Query(() => [Hotel])
     async getHotels(@Args() args: GetHotelsArgs) {
         let orderBy: any = undefined;
+      
         if (args.orderByField && args.orderFieldDirection) {
             orderBy = { [args.orderByField]: args.orderFieldDirection };
         }
+     
         const hotels = await this.hotelService.getHotels({
-            limit: args.limit,
-            offset: args.offset,
+            limit: args.limit,  
+            offset: args.offset,  
             where: {
                 name: args.name ? { contains: args.name } : undefined,
                 location: args.location ? { contains: args.location } : undefined
