@@ -1,1 +1,1 @@
-pm2 start "dotenv -e .env.production -- node dist/main.js" --name nestjs-app
+pm2 start "dotenv -e .env.production -- node dist/main.js" --name technical-test-hotel-list-master-prod
