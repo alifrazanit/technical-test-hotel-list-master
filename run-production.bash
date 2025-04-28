@@ -1,0 +1,1 @@
+pm2 start "dotenv -e .env.production -- node dist/main.js" --name nestjs-app
