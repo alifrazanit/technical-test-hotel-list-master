@@ -28,9 +28,6 @@ export class HotelResolver {
             },
             orderBy
         });
-        if (!hotels) {
-            throw new NotFoundException();
-        }
         return hotels;
     }
 

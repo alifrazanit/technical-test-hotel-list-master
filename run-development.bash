@@ -1,1 +1,0 @@
-pm2 start "dotenv -e .env.development -- node dist/main.js" --name technical-test-hotel-list-master-dev
